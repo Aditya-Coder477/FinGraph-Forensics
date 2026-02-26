@@ -129,14 +129,6 @@ Upload a `.csv` file with the following required columns:
 
 ---
 
-## ☁️ Deployment
-
-### Render (Recommended)
-1. Push to GitHub
-2. Create new **Web Service** on [render.com](https://render.com)
-3. Set **Build Command**: `pip install -r requirements.txt`
-4. Set **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-
 ## 👤 Author
 
 Built for the **Financial Forensics & AML Detection Hackathon**.
