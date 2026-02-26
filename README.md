@@ -133,4 +133,4 @@ Open **[http://127.0.0.1:8000](http://127.0.0.1:8000)** in your browser.
 
 ## 👤 Author
 
-Built for the **Financial Forensics & AML Detection Hackathon**.
+Built for the **Financial Forensics & AML Detection by Aditya Raj**.
