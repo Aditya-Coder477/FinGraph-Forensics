@@ -42,6 +42,21 @@ Money Muling Detection system/
 
 ---
 
+
+
+## 🖥️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Backend** | Python, FastAPI, Uvicorn |
+| **Graph Analysis** | NetworkX |
+| **Data Processing** | Pandas, NumPy |
+| **Frontend** | Vanilla JS, HTML5, CSS3 |
+| **Graph Visualization** | Cytoscape.js |
+| **Templating** | Jinja2 |
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -113,19 +128,6 @@ Upload a `.csv` file with the following required columns:
 | `GET` | `/results` | Dashboard results page |
 | `GET` | `/api/results` | Fetch latest analysis JSON |
 | `GET` | `/api/download` | Download results as `results.json` |
-
----
-
-## 🖥️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **Backend** | Python, FastAPI, Uvicorn |
-| **Graph Analysis** | NetworkX |
-| **Data Processing** | Pandas, NumPy |
-| **Frontend** | Vanilla JS, HTML5, CSS3 |
-| **Graph Visualization** | Cytoscape.js |
-| **Templating** | Jinja2 |
 
 ---
 
