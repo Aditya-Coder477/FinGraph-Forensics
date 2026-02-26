@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Temp uploaded CSV files (generated at runtime)
+temp_*.csv
+temp_*.xls
+temp_*.xlsx
+results.json
+
+# IDE / OS
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# Uvicorn / logs
+*.log
+
+# Pytest cache
+.pytest_cache/
+.cache/

@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pandas
+networkx
+python-multipart
+jinja2
+pydantic

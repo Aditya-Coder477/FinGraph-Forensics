@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Forensics Engine - Results</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+    <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+    <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+    <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+</head>
+<body class="dashboard-body">
+    
+    <!-- SECTION 1: HERO HEADER -->
+    <header class="hero-header">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="brand-icon">🛡️</div>
+                <div>
+                    <h1>Financial Forensics Engine</h1>
+                    <p class="subtitle">Detecting Hidden Money Muling Networks | Graph Intelligence</p>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="/" class="btn btn-secondary">Upload New CSV</a>
+                <a href="/api/download" class="btn btn-primary">Download JSON Report</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+
+
+        <!-- SECTION: FRAUD RING EXPLORER (full width, top) -->
+        <div class="panel mb-2">
+            <div class="panel-header">
+                <h3>🕸️ Detected Fraud Rings</h3>
+            </div>
+            <table id="rings-table" class="clean-table">
+                <thead>
+                    <tr>
+                        <th>Ring ID</th>
+                        <th>Pattern Type</th>
+                        <th>Members</th>
+                        <th>Risk Score</th>
+                        <th>Member Account IDs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- JS Populated -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION: NETWORK VISUALIZATION (full width, below rings table) -->
+        <div class="graph-section mb-2">
+            <div class="graph-container panel">
+                <div class="graph-header">
+                    <h3>Network Visualization</h3>
+                    <div class="graph-controls">
+                        <button class="control-btn active" id="btn-focus">Focus View</button>
+                        <button class="control-btn" id="btn-suspicious">Suspicious Only</button>
+                        <button class="control-btn" id="btn-full">Full Network</button>
+                    </div>
+                </div>
+                <div id="cy">
+                    <div id="graph-placeholder">
+                        <p>👆 Select a Ring from the table above to visualize.</p>
+                    </div>
+                </div>
+                <div class="graph-legend">
+                    <span class="dot normal"></span> Normal
+                    <span class="dot merchant"></span> Merchant
+                    <span class="dot suspicious"></span> Suspicious
+                    <span class="dot selected-ring"></span> Active Ring
+                </div>
+            </div>
+
+            <!-- SIDE PANEL (Ring Intelligence) -->
+            <div class="side-panel panel" id="side-panel" style="display:none;">
+                <div class="panel-header">
+                    <h3>🧠 Ring Intelligence</h3>
+                    <button class="close-btn" id="close-side-panel">&times;</button>
+                </div>
+                <div class="intel-content">
+                    <div class="intel-row">
+                        <label>Ring ID</label>
+                        <div id="intel-id" class="intel-val">-</div>
+                    </div>
+                    <div class="intel-row">
+                        <label>Primary Pattern</label>
+                        <div id="intel-pattern" class="intel-val badge">-</div>
+                    </div>
+                    <div class="intel-row">
+                        <label>Avg Risk Score</label>
+                        <div id="intel-score" class="intel-val score-high">-</div>
+                    </div>
+                    <hr>
+                    <div class="intel-explanation">
+                        <h4>AI Explanation</h4>
+                        <p id="intel-desc">Select a ring to see analysis.</p>
+                    </div>
+                    <div class="intel-members">
+                        <h4>Members Identified</h4>
+                        <ul id="intel-members-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAPH RESULT AREA: shown on Focus / Suspicious view -->
+        <div class="graph-result-area panel mb-2" id="graph-result-area" style="display:none;">
+            <div class="panel-header">
+                <h3 id="graph-result-title">View Results</h3>
+            </div>
+            <div class="graph-result-content" id="graph-result-content"></div>
+        </div>
+
+        <!-- SECTION 2: INVESTIGATION SUMMARY CARDS -->
+        <div class="summary-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Accounts</div>
+                <div class="stat-value" id="stat-total">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Transactions</div>
+                <div class="stat-value" id="stat-transactions">0</div>
+            </div>
+            <div class="stat-card highlight-card">
+                <div class="stat-label">Fraud Rings Detected</div>
+                <div class="stat-value" id="stat-rings">0</div>
+            </div>
+            <div class="stat-card danger-card">
+                <div class="stat-label">High Risk Accounts</div>
+                <div class="stat-value" id="stat-suspicious">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Processing Time</div>
+                <div class="stat-value" id="stat-time">0s</div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: RISK OVERVIEW PANEL -->
+        <div class="risk-overview-grid">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>🚨 Top Suspicious Accounts</h3>
+                </div>
+                <div class="table-compact-container">
+                    <table id="suspicious-table-mini">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Score</th>
+                                <th>Primary Pattern</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- JS Populated --></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>📊 Pattern Distribution</h3>
+                </div>
+                <div class="pattern-chart-wrap" id="pattern-dist">
+                    <!-- JS will build chart bars here -->
+                </div>
+                <div class="panel-explainer">
+                    <p><strong>Insight:</strong> <span id="insight-text">Loading analysis...</span></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="/static/graph.js"></script>
+</body>
+</html>
