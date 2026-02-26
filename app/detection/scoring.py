@@ -251,7 +251,7 @@ class FraudDetector:
             # Or exclude completely? "LOW risk accounts must NOT be counted as suspicious."
             # Let's filter list.
             
-            if data['risk_tier'] in ['HIGH', 'MEDIUM']:
+            if data['risk_tier'] == 'HIGH':
                 suspicious_list.append({
                     "account_id": acc_id,
                     "suspicion_score": float(data['score']),
