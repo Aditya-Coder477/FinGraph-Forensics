@@ -57,36 +57,6 @@ Money Muling Detection system/
 
 ---
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.9+
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/money-muling-detection.git
-cd money-muling-detection
-
-# 2. Create & activate virtual environment
-python -m venv venv
-venv\Scripts\activate        # Windows
-source venv/bin/activate     # macOS/Linux
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Run the application
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
-```
-
-Open **[http://127.0.0.1:8000](http://127.0.0.1:8000)** in your browser.
-
-> **Windows users**: Double-click `run_app.bat` to start directly.
-
----
-
 ## 📂 Input Format
 
 Upload a `.csv` file with the following required columns:
@@ -128,6 +98,36 @@ Upload a `.csv` file with the following required columns:
 | `GET` | `/results` | Dashboard results page |
 | `GET` | `/api/results` | Fetch latest analysis JSON |
 | `GET` | `/api/download` | Download results as `results.json` |
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.9+
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/money-muling-detection.git
+cd money-muling-detection
+
+# 2. Create & activate virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+source venv/bin/activate     # macOS/Linux
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run the application
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Open **[http://127.0.0.1:8000](http://127.0.0.1:8000)** in your browser.
+
+> **Windows users**: Double-click `run_app.bat` to start directly.
 
 ---
 
